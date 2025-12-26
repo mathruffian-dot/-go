@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>天選之人與命運題目</title>
+    <!-- Google Fonts: Outfit for general text, Bebas Neue for impactful display numbers/equations -->
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Extend Tailwind CSS configuration for custom fonts, colors, and animations
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'], // Clean, legible sans-serif for general text and headings
+                        display: ['"Bebas Neue"', 'sans-serif'], // Bold, impactful display font for numbers and equations
+                    },
+                    colors: {
+                        // Custom vibrant and approachable color palette for an engaging classroom feel
+                        primary: { // Cool, calming blue-green for backgrounds, secondary elements, and structure
+                            50: '#F0FDFA', // Lightest, for subtle accents
+                            100: '#CCFBF1',
+                            200: '#99F6E4',
+                            300: '#5EEAD4',
+                            400: '#2DD4BF',
+                            500: '#14B8A6', // Main primary color
+                            600: '#0D9488',
+                            700: '#0F766E',
+                            800: '#115E59',
+                            900: '#134E4A', // Darkest, for strong text or deep accents
+                        },
+                        accent: { // Bright, energetic orange for interactive elements and key information
+                            50: '#FFF7ED', // Lightest accent for subtle highlights
+                            100: '#FFEDD5',
+                            200: '#FED7AA',
+                            300: '#FDBA74',
+                            400: '#FB923C',
+                            500: '#F97316', // Main accent color
+                            600: '#EA580C',
+                            700: '#C2410C',
+                            800: '#9A3412',
+                            900: '#7C2D12', // Darkest accent
+                        },
+                        neutral: '#4B5563', // Dark gray for general text to ensure readability
+                        background: '#F8FAFC', // Very light, almost white background for overall page
+                        card: '#FFFFFF', // Pure white for card components, providing contrast
+                    },
+                    keyframes: {
+                        // Custom keyframe for a subtle, long-duration pulse effect
+                        pulseSlow: {
+                            '0%, 100%': { transform: 'scale(1)', opacity: '1' },
+                            '50%': { transform: 'scale(1.02)', opacity: '0.95' }, // Slightly larger and less opaque
+                        },
+                        // Keyframe for a subtle, animating background gradient effect
+                        bgPan: {
+                            '0%': { backgroundPosition: '0% 0%' },
+                            '100%': { backgroundPosition: '100% 100%' },
+                        }
+                    },
+                    animation: {
+                        pulseSlow: 'pulseSlow 3s ease-in-out infinite', // Apply to number displays
+                        bgPan: 'bgPan 20s infinite alternate linear', // Apply to section backgrounds
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom scrollbar for a polished and premium user experience */
+        ::-webkit-scrollbar {
+            width: 8px; /* Width of the scrollbar */
+        }
+        ::-webkit-scrollbar-track {
+            background: theme('colors.primary.100'); /* Track color */
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: theme('colors.primary.500'); /* Thumb color */
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: theme('colors.primary.600'); /* Thumb color on hover */
+        }
+
+        /* Radial gradient background for the body, adding depth and visual interest */
+        body {
+            background: radial-gradient(at top left, theme('colors.background') 0%, theme('colors.primary.50') 100%);
+            min-height: 100vh; /* Ensure full viewport height */
+        }
+
+        /* Dynamic background for sections, creating a "living" component feel */
+        .section-background-anim {
+            background-image: linear-gradient(135deg, theme('colors.card') 0%, theme('colors.primary.50') 100%);
+            position: relative;
+            overflow: hidden; /* Ensures pseudo-elements don't overflow */
+        }
+        .section-background-anim::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            /* Subtle radial gradients for a soft, dynamic effect */
+            background: radial-gradient(circle at 10% 20%, rgba(200, 240, 255, 0.3) 0%, transparent 50%),
+                        radial-gradient(circle at 90% 80%, rgba(255, 220, 200, 0.3) 0%, transparent 50%);
+            animation: bgPan 20s infinite alternate linear; /* Apply custom background pan animation */
+            z-index: 0; /* Ensure it stays behind content */
+            opacity: 0.7; /* Soften the effect */
+        }
+    </style>
+</head>
+<body class="font-sans text-neutral p-4 md:p-8 leading-relaxed selection:bg-accent-200 selection:text-accent-900">
+
+    <!-- Overall Header: Provides context for the entire page with engaging text -->
+    <header class="text-center py-6 md:py-10 mb-8">
+        <h1 class="text-4xl md:text-5xl font-bold text-primary-700 tracking-tight leading-snug">
+            歡迎來到<br class="md:hidden"> <span class="text-accent-600">課堂互動</span> 挑戰！
+        </h1>
+        <p class="mt-4 text-lg md:text-xl text-neutral-600 max-w-2xl mx-auto">
+            準備好測試你的運氣與智慧了嗎？
+        </p>
+    </header>
+
+    <!-- '天選之人' (Chosen One) Section: Interactive lottery draw for engagement -->
+    <section class="section-background-anim max-w-3xl mx-auto my-12 p-8 md:p-12 rounded-3xl shadow-2xl text-center relative z-10
+                    transform hover:scale-[1.01] transition-all duration-300 ease-in-out">
+        <h2 class="text-4xl md:text-5xl font-bold text-primary-600 mb-8 pb-4 border-b-4 border-primary-200 inline-block px-6
+                   tracking-tight font-display uppercase">
+            天選之人
+        </h2>
+        <p class="text-lg md:text-xl text-neutral-700 mb-8">
+            誰是今天的幸運兒？點擊按鈕，讓命運之輪為你選出一個數字！
+        </p>
+        <button id="chooseLotteryButton"
+                class="bg-accent-500 text-white px-10 py-5 rounded-full text-2xl md:text-3xl font-semibold shadow-xl
+                       hover:bg-accent-600 hover:scale-105 active:scale-95 transition-all duration-300 ease-in-out
+                       focus:outline-none focus:ring-4 focus:ring-accent-300 focus:ring-opacity-75 relative z-20">
+            點擊抽籤
+        </button>
+        <div id="lotteryNumberDisplay"
+             class="mt-10 mb-6 text-7xl md:text-9xl font-display text-accent-700 min-h-[1.5em]
+                    flex items-center justify-center bg-primary-100 p-6 md:p-8 rounded-2xl shadow-inner
+                    tracking-wide border-4 border-primary-200 transform scale-0 opacity-0
+                    transition-all duration-500 ease-out italic">
+            <!-- Randomly generated number will be displayed here -->
+        </div>
+    </section>
+
+    <!-- '命運題目' (Destiny Problem) Section: Educational math challenge -->
+    <section class="section-background-anim max-w-3xl mx-auto my-12 p-8 md:p-12 rounded-3xl shadow-2xl text-center relative z-10
+                    transform hover:scale-[1.01] transition-all duration-300 ease-in-out">
+        <h2 class="text-4xl md:text-5xl font-bold text-primary-600 mb-8 pb-4 border-b-4 border-primary-200 inline-block px-6
+                   tracking-tight font-display uppercase">
+            命運題目
+        </h2>
+        <p class="text-lg md:text-xl text-neutral-700 mb-8">
+            這道數學題，你能解開它的奧秘嗎？
+        </p>
+        <p class="math-problem-text text-5xl md:text-7xl font-display text-primary-800 my-8 leading-tight tracking-wide bg-primary-50 p-6 rounded-xl border-2 border-primary-100">
+            2x + 3 = 13
+        </p>
+        <button id="viewSolutionButton"
+                class="bg-primary-500 text-white px-10 py-5 rounded-full text-2xl md:text-3xl font-semibold shadow-xl
+                       hover:bg-primary-600 hover:scale-105 active:scale-95 transition-all duration-300 ease-in-out
+                       focus:outline-none focus:ring-4 focus:ring-primary-300 focus:ring-opacity-75 mt-6 relative z-20">
+            看詳解
+        </button>
+        <div id="solutionDisplay"
+             class="mt-10 mb-6 text-5xl md:text-7xl font-display text-accent-600 p-6 md:p-8
+                    bg-accent-50 rounded-2xl border-2 border-dashed border-accent-300 shadow-md
+                    tracking-wide transition-all duration-500 ease-in-out transform scale-0 opacity-0
+                    italic">
+            x = 5
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Lottery Game Logic
+            const chooseLotteryButton = document.getElementById('chooseLotteryButton');
+            const lotteryNumberDisplay = document.getElementById('lotteryNumberDisplay');
+
+            if (chooseLotteryButton && lotteryNumberDisplay) {
+                chooseLotteryButton.addEventListener('click', () => {
+                    const randomNumber = Math.floor(Math.random() * 30) + 1; // Generates a number between 1 and 30
+                    lotteryNumberDisplay.textContent = randomNumber;
+
+                    // Trigger reveal animation and then the pulse effect
+                    lotteryNumberDisplay.classList.remove('scale-0', 'opacity-0', 'animate-pulseSlow');
+                    // Force a reflow/repaint to ensure the animation re-triggers from initial state
+                    void lotteryNumberDisplay.offsetWidth;
+                    lotteryNumberDisplay.classList.add('scale-100', 'opacity-100', 'animate-pulseSlow');
+                });
+            }
+
+            // Math Problem Solution Logic
+            const viewSolutionButton = document.getElementById('viewSolutionButton');
+            const solutionDisplay = document.getElementById('solutionDisplay');
+
+            if (viewSolutionButton && solutionDisplay) {
+                viewSolutionButton.addEventListener('click', () => {
+                    // Reveal the solution with a smooth transition
+                    solutionDisplay.classList.remove('scale-0', 'opacity-0');
+                    solutionDisplay.classList.add('scale-100', 'opacity-100');
+
+                    // Disable the button and change its appearance after showing the solution
+                    viewSolutionButton.disabled = true;
+                    viewSolutionButton.textContent = '詳解已顯示';
+                    viewSolutionButton.classList.remove('bg-primary-500', 'hover:bg-primary-600', 'hover:scale-105', 'active:scale-95');
+                    viewSolutionButton.classList.add('bg-gray-400', 'cursor-not-allowed', 'shadow-inner');
+                    viewSolutionButton.classList.remove('focus:ring-primary-300'); // Remove focus ring
+                    viewSolutionButton.classList.add('focus:ring-gray-300'); // Change focus ring color
+                });
+            }
+        });
+    </script>
+</body>
+</html>
